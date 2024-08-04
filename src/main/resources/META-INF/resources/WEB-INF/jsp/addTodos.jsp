@@ -13,9 +13,11 @@
 	
 	  <c:choose>
         <c:when test="${not empty name}">
-     		<h1>Add new Todo Here</h1>
-     		
-     		///
+     		<form method="post">
+     			<h3>Enter Description</h3>
+     			<input type="text" name="description" />
+     			<button type="submit" class="btn btn-secondary"> Submit</button>
+     		</form>
         </c:when>
         <c:otherwise>
             <h1>OOPS Please go to login page</h1>
