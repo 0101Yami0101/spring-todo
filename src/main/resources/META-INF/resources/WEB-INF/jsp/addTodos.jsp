@@ -1,18 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ include file="common/header.jsp" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<link href="webjars/bootstrap/5.3.0/css/bootstrap.min.css"  rel="stylesheet">
-<link href="webjars/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css" rel="stylesheet">
-<title>Add todo</title>
-</head>
-<body>
+	<%@ include file="common/navigation.jsp" %>
 	
 	<div class="container">
 	
@@ -45,12 +33,10 @@
         </c:otherwise>
        </c:choose>
 	</div>
-	<script src="webjars/jquery/3.6.0/jquery.min.js"></script>
-	<script src="webjars/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 	<script type="text/javascript">
 	  $('#targetDate').datepicker({
 	        format: 'yyyy-mm-dd'
 	    });
 	</script>
-</body>
-</html>
+	
+	<%@ include file="common/footer.jsp" %>
