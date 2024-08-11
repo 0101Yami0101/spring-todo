@@ -4,9 +4,7 @@
 	
 	<div class="container">
 	
-	  <c:choose>
-        <c:when test="${not empty name}">
-        	<h2>Enter Todo Details</h2>
+        	<h2>Enter Todo Details ${name}</h2>
      		<form:form method="post" modelAttribute="todo">
      			<fieldset class="mb-3">	     		
 	     			<form:label path="description">Description</form:label>
@@ -26,12 +24,7 @@
      			<button type="submit" class="btn btn-secondary"> Submit</button>  
      			
      		</form:form>
-        </c:when>
-        <c:otherwise>
-            <h1>OOPS Please go to login page</h1>
-            <a href= "/login">Login</a>
-        </c:otherwise>
-       </c:choose>
+  
 	</div>
 	<script type="text/javascript">
 	  $('#targetDate').datepicker({

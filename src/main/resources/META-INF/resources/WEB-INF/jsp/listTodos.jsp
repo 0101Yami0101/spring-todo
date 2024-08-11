@@ -50,8 +50,6 @@
 	<%@ include file="common/navigation.jsp" %>
     
     
-    <c:choose>
-        <c:when test="${not empty name}">
         <h1 class="bg-light">Hello ${name} , this is your todos page</h1>
             <table class="container">
                 <thead>
@@ -78,12 +76,7 @@
                 </tbody>
             </table>
             <a href="/add-todo" class="btn btn-primary">Add todo</a>
-        </c:when>
-        <c:otherwise>
-            <h1>OOPS Please go to login page</h1>
-            <a href= "/login">Login</a>
-        </c:otherwise>
-    </c:choose>
+
      
 	
 	<%@ include file="common/footer.jsp" %>
