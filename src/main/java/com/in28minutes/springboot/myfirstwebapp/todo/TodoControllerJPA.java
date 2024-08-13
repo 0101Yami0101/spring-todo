@@ -2,6 +2,7 @@ package com.in28minutes.springboot.myfirstwebapp.todo;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,11 +22,11 @@ public class TodoControllerJPA {
 	
 	public TodoControllerJPA(TodoService todoService, TodoRepository todoRepository) {
 		super();
-		this.todoService = todoService;
+		//this.todoService = todoService;
 		this.todoRepository = todoRepository;
 	}
 	
-	private TodoService todoService;
+	//private TodoService todoService;
 	
 	private TodoRepository todoRepository;
 
@@ -56,21 +57,24 @@ public class TodoControllerJPA {
 			return "addTodos";
 		}
 		String username= getLoggedInUsername();
-		todoService.addTodo(username, todo.getDescription(), todo.getTargetDate(), false);
+//		todoService.addTodo();
+		Todo todo1= new Todo(0,username, todo.getDescription(), todo.getTargetDate(), false);
+		todoRepository.save(todo1);
+		
 		return "redirect:list-todos";
 	}
 		
 	@RequestMapping("delete-todo")
 	public String deleteATodo(@RequestParam int id) {
 		
-		todoService.deleteById(id);	
+		todoRepository.deleteById(id);;	
 		return "redirect:list-todos";
 	}
 	
 	@RequestMapping(value="update-todo" , method= RequestMethod.GET)
 	public String ShowUpdateATodoPage(@RequestParam int id, ModelMap model) {	
 			
-		Todo todo= todoService.findById(id);
+		Optional<Todo> todo= todoRepository.findById(id);
 		model.addAttribute("todo", todo);
 		return "addTodos";
 	}
@@ -83,7 +87,13 @@ public class TodoControllerJPA {
 		}
 		String username= getLoggedInUsername();
 		todo.setUsername(username);
-		todoService.updateTodo(todo);
+//		Delete from repo and add a new one with same ID
+		
+		todoRepository.deleteById(todo.getId());
+		todoRepository.save(todo);
+		
+
+		
 		return "redirect:list-todos";
 	}
 	
