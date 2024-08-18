@@ -87,13 +87,8 @@ public class TodoControllerJPA {
 		}
 		String username= getLoggedInUsername();
 		todo.setUsername(username);
-//		Delete from repo and add a new one with same ID
-		
-		todoRepository.deleteById(todo.getId());
 		todoRepository.save(todo);
-		
-
-		
+	
 		return "redirect:list-todos";
 	}
 	
